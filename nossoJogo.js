@@ -17,12 +17,36 @@
  let segundaCartaUsuario;
  let primeiraCartaPc;
  let segundaCartaPc;
+ let cartasUsuario = "";
+ let cartasPc = "";
+ let pontuacaoPc = 0;
+ let pontuacaoUsuario = 0;
  
  if(confirm){
+	// jogo do usuario
 	primeiraCartaUsuario = comprarCarta();
 	segundaCartaUsuario = comprarCarta();
+	cartasUsuario = `${primeiraCartaUsuario.texto} - ${segundaCartaUsuario.texto}`;
+	pontuacaoUsuario = primeiraCartaUsuario.valor + segundaCartaUsuario.valor;
+	
+	// jogo do pc
 	primeiraCartaPc = comprarCarta();
 	segundaCartaPc = comprarCarta();
+	cartasPc = `${primeiraCartaPc.texto} - ${segundaCartaPc.texto}`;
+	pontuacaoPc = primeiraCartaPc.valor + segundaCartaPc.valor;
+	
+	// apresentação das cartas e pontuação no console.
+	console.log(`Cartas do Usuário : ${cartasUsuario} \nPontuação do Usuário: ${pontuacaoUsuario}`);
+	console.log(`Cartas do Pc : ${cartasPc} \nPontuação do Pc: ${pontuacaoPc}`);
+	
+	// apresentação do ganhador ou caso de empate no console
+	if(pontuacaoUsuario > pontuacaoPc){
+		console.log(`O usuário ganhou!`);
+	}else if(pontuacaoUsuario < pontuacaoPc){
+		console.log(`O pc ganhou!`);
+	}else{
+		console.log(`Empate!`);
+	}
  }else{
-	 console.log("O jogo acabou");
+	 console.log(`O jogo acabou`);
  }
